@@ -40,7 +40,7 @@ particionar <- function(
 # Aqui comienza el programa
 
 # Establezco el Working Directory, elija una carpeta de su 
-setwd("~/buckets/b1/")
+setwd("C:/Eugenio/Maestria/DMEyF")
 
 # cargo el dataset
 dataset <- fread("./datasets/competencia_01.csv")
@@ -57,14 +57,11 @@ particionar(dataset,
 
 
 # genero el modelo
-# quiero predecir clase_ternaria a partir del resto
-# fold==1  es training,  el 70% de los datos
-modelo <- rpart("clase_ternaria ~ .",
-  data = dataset[fold == 1],
+modelo <- rpart("clase_ternaria ~ .", # quiero predecir clase_ternaria a partir del resto
+  data = dataset[fold == 1], # fold==1  es training,  el 70% de los datos
   xval = 0,
   control = PARAM$rpart # aqui van los parametros
 )
-
 
 # aplico el modelo a los datos de testing
 prediccion <- predict(modelo, # el modelo que genere recien
