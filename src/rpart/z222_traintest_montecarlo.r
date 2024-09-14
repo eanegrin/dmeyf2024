@@ -9,6 +9,9 @@ PARAM <- list()
 # reemplazar por las propias semillas
 PARAM$semillas <- c(102191, 200177, 410551, 552581, 892237)
 
+# Establezco el Working Directory
+setwd("C:/Eugenio/Maestria/DMEyF")
+
 PARAM$dataset_nom <- "./datasets/competencia_01.csv"
 
 PARAM$training_pct <- 70L  # entre  1L y 99L 
@@ -23,6 +26,7 @@ PARAM$rpart <- list (
 #------------------------------------------------------------------------------
 # particionar agrega una columna llamada fold a un dataset que consiste
 #  en una particion estratificada segun agrupa
+
 # particionar( data=dataset, division=c(70,30), agrupa=clase_ternaria, seed=semilla)
 #  crea una particion 70, 30
 
@@ -75,7 +79,7 @@ ArbolEstimarGanancia <- function(semilla, param_basicos) {
     ))
   ]
 
-  # escalo la ganancia como si fuera todo el dataset
+  # escalo la ganancia como si fuera todo el dataset (osea ver cuanto estarias ganando si en vez del 70% delos datos usaras el 100%)
   ganancia_test_normalizada <- ganancia_test / (( 100 - PARAM$training_pct ) / 100 )
 
   return(list(
@@ -94,7 +98,7 @@ ArbolEstimarGanancia <- function(semilla, param_basicos) {
 #------------------------------------------------------------------------------
 
 # Aqui se debe poner la carpeta de la computadora local
-setwd("~/buckets/b1/") # Establezco el Working Directory
+setwd("C:/Eugenio/Maestria/DMEyF") # Establezco el Working Directory
 
 # cargo los datos
 dataset <- fread(PARAM$dataset_nom)

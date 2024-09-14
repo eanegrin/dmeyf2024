@@ -48,7 +48,7 @@ dataset <- fread("./datasets/competencia_01.csv")
 # trabajo, por ahora, solo con 202104
 dataset <- dataset[foto_mes==202104]
 
-# particiono estratificadamente el dataset 70%, 30%
+# particiono estratificadamente el dataset 70%, 30% (agrega la columna fold donde indica a que particion pertenece cada fila)
 particionar(dataset,
   division = c(PARAM$training_pct, 100L -PARAM$training_pct), 
   agrupa = "clase_ternaria",
@@ -78,6 +78,8 @@ dataset[, ganancia := ifelse(clase_ternaria == "BAJA+2", 273000, -7000)]
 
 # para testing agrego la probabilidad
 dataset[fold == 2, prob_baja2 := prediccion[, "BAJA+2"]]
+
+unique(dataset[,.(fold,prob_baja2)]) # esta bueno lo de arriba porque data.table te permite filtrar y asignar a otra columna en la misma linea, en tidyverse creo que si o si tenes que hacer un if_else para asignarle NA al fold que no queres modificar
 
 # calculo la ganancia en testing  qu es fold==2
 ganancia_test <- dataset[fold == 2 & prob_baja2 > 0.025, sum(ganancia)]
