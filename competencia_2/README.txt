@@ -1,7 +1,0 @@
-Orden de ejecucion
-
-fe01_clase_ternaria
-
-jxx_ipc_deflactor
-
-fe02_feature_engineering
