@@ -1,5 +1,7 @@
 Modelo final elegido para la competencia 2
 
+Archivo elegido: results_v016_s4_17
+
 Los archivos se ejecutan en el orden que indica el nombre (numero de job):
 
 j1_clase_ternaria: crea la clase target en el dataset original
