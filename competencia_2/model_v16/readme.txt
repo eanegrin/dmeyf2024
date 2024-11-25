@@ -1,6 +1,6 @@
 Modelo final elegido para la competencia 2
 
-Archivo elegido: results_v016_s4_17
+Archivo elegido: results_v016_s5_14
 
 Los archivos se ejecutan en el orden que indica el nombre (numero de job):
 
